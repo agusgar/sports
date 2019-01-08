@@ -1,0 +1,52 @@
+<div class="profile-component" *ngIf="followedEquipos && equipos">
+  <div class="title-block">
+    <h1>Perfil Usuario</h1>
+  </div>
+  <div class="equipos">
+    <h3>Filtros</h3>
+    <div class="filters">
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedDeporteId" (selectionChange)="onFilterChanged($event)">
+          <mat-option *ngFor="let deporte of deportes" [value]="deporte.id">{{deporte.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedOrder" (selectionChange)="onFilterChanged($event)">
+          <mat-option *ngFor="let order of orders" [value]="order.id">{{order.text}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Filtre por nombre" [(ngModel)]="nombre">
+      </mat-form-field>
+    </div>
+    <div class="list">
+      <div class="equipo" *ngFor="let equipo of (equipos | nombreEquipoPipe:nombre)">
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar>
+              <div [class]="getFollowIconClass(equipo)">
+                <mat-icon>star</mat-icon>
+              </div>
+            </div>
+            <mat-card-title>{{equipo.nombre}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-actions>
+            <button mat-button (click)="onFollowEquipo(equipo)">{{getFollowButtonText(equipo)}}</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div *ngIf="(equipos | nombreEquipoPipe:nombre).length === 0">
+        <app-alert
+          [type]="type.Info"
+          msg="No hay equipos que cumplan con los criterios de busqueda">
+        </app-alert>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="no-content" *ngIf="noDeportes">
+  <app-alert
+    [type]="type.Info"
+    msg="No se encontraron deportes en el sistema. Por el momento esta pagina no se encuentra disponible. Comienza agregando nuevos deportes usando la opcion de agregar deportes en la pantalla de deportes.">
+  </app-alert>
+</div>

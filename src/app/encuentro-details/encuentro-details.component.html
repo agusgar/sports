@@ -1,0 +1,54 @@
+<div class="encuentro-details-component" *ngIf="encuentro && equipos && deporte">
+  <div class="title-block">
+    <h1>Informacion sobre encuentro</h1>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="primary"
+        matTooltip="Modificar encuentro"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onChangeEncuentro()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="warn"
+        matTooltip="Eliminar encuentro"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onDeleteEncuentro()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">Fecha encuentro: </div>
+      <div class="field-value">{{encuentro.fechaYHora | date:'mediumDate':'uy':'es' }}</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Deporte: </div>
+      <div class="field-value">{{deporte.nombre}}</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Equipos participantes: </div>
+      <div class="field-value">
+        <mat-chip-list>
+          <mat-chip color="primary" *ngFor="let equipo of equipos">{{equipo.nombre}}</mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+  </div>
+  <div class="bottom-actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onAddResultEncuentro()">
+      AGREGAR RESULTADO
+    </button>
+  </div>
+</div>

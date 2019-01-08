@@ -1,0 +1,59 @@
+.encuentro-details-component {
+  padding: 0 30px;
+
+  .title-block {
+    display: flex;
+
+    & > :nth-child(2) {
+      margin-left: 15px;
+    }
+
+    .title-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .equipos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .equipo {
+      margin: 10px;
+    }
+  }
+
+  .actions {
+    button {
+      margin: 10px;
+    }
+  }
+
+  .fields {
+    display: flex;
+    flex-direction: column;
+
+    .field {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+
+      &:not(:first-child) {
+        margin-top: 10px;
+      }
+
+      .field-label {
+        margin-right: 10px;
+      }
+      .field-value {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .bottom-actions {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,54 @@
+.profile-component {
+  padding: 0 30px;
+
+  .title-block {
+    display: flex;
+
+    & > :nth-child(2) {
+      margin-left: 15px;
+    }
+
+    .title-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .equipos {
+    display: flex;
+    flex-direction: column;
+
+    .filters {
+      display: flex;
+      >*:not(:first-child) {
+        margin-left: 20px;
+      }
+    }
+
+    .list {
+      display: flex;
+      flex-wrap: wrap;
+
+      .equipo {
+        margin: 10px;
+
+        .followed {
+          color: orange;
+        }
+        .not-followed {
+          color: grey;
+        }
+      }
+    }
+  }
+}
+.no-content {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+
+  &>* {
+    width: 50%
+  }
+}

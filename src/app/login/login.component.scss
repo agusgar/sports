@@ -1,0 +1,16 @@
+.login-component {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+
+  .login-form {
+    .login-card {
+      width: 250px;
+      padding: 50px;
+
+      .login-row {
+        width: 100%;
+      }
+    }
+  }
+}

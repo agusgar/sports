@@ -1,0 +1,50 @@
+<div class="resultado-edit-component" *ngIf="equipos">
+  <form [formGroup]="resultadoEditForm" class="resultado-edit-form" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>Agregar Resultado</h1>
+    <div mat-dialog-content>
+      <div [ngSwitch]="resultType">
+        <div *ngSwitchCase="type.Winner">
+          <h3>Elija ganador</h3>
+          <mat-radio-group formControlName="winner" class="winner-field">
+            <mat-radio-button [value]="firstEquipo.id">{{firstEquipo.nombre}}</mat-radio-button>
+            <mat-radio-button [value]="secondEquipo.id">{{secondEquipo.nombre}}</mat-radio-button>
+            <mat-radio-button [value]="EMPATE_ID">Empate</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div *ngSwitchCase="type.Positions">
+          <h3>Elija ganadores</h3>
+          <div class="field-row">
+            <mat-form-field>
+              <mat-select formControlName="selectedEquipoId">
+                <mat-option *ngFor="let equipo of equipos" [value]="equipo.id">{{equipo.nombre}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button mat-button type="button" (click)="onAddEquipo()">AGREGAR</button>
+          </div>
+          <mat-form-field class="example-chip-list">
+            <mat-chip-list formArrayName="selectedEquipos">
+              <mat-chip
+                *ngFor="let equipo of selectedEquipos.controls; let i=index"
+                [selectable]="true"
+                [removable]="true"
+                (removed)="onRemoveEquipo(equipo)">
+                {{i+1}}.{{equipo.value}}
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip>
+
+              <div class="field-errors-wrapper">
+                <mat-error *ngIf="selectedEquipos.errors?.required || selectedEquipos.errors?.minlength">
+                  Se deben agregar <strong>por lo menos 3 equipos</strong>
+                </mat-error>
+              </div>
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="false">Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial [disabled]="!resultadoEditForm.valid">Guardar</button>
+    </div>
+  </form>
+</div>

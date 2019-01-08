@@ -1,0 +1,91 @@
+.comentarios-component {
+  padding: 0 30px;
+  display: flex;
+
+  .encuentros {
+    width: 100%;
+
+    .title-block {
+      display: flex;
+
+      & > :nth-child(2) {
+        margin-left: 15px;
+      }
+
+      .title-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+
+    .list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      .encuentro {
+        margin: 10px;
+
+        &.selected {
+          .mat-card {
+            background-color: #ededed;
+          }
+        }
+
+        .mat-card:hover {
+          cursor: pointer;
+          background-color: #ededed;
+        }
+
+        .mat-card:active {
+          cursor: pointer;
+          background-color: #f3f1f1;
+        }
+      }
+    }
+  }
+
+  .comentarios {
+    width: 70%;
+
+    .encuentro-details {
+      .fields {
+        display: flex;
+        flex-direction: column;
+
+        .field {
+          display: flex;
+          align-items: center;
+          font-size: 18px;
+
+          &:not(:first-child) {
+            margin-top: 10px;
+          }
+
+          .field-label {
+            margin-right: 10px;
+          }
+          .field-value {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .new-comentario {
+      .mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.no-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  &>* {
+    width: 50%;
+  }
+}

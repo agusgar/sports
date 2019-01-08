@@ -1,0 +1,28 @@
+.encuentro-edit-form {
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .field-errors-wrapper {
+    width: 100%;
+  }
+
+  .field-row {
+    display: flex;
+  }
+
+  .list-item-title {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+}
+
+.no-content {
+  display: flex;
+  justify-content: center;
+
+  &>* {
+    width: 50;
+  }
+}

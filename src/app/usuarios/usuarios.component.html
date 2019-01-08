@@ -1,0 +1,27 @@
+<div class="usuarios-component">
+  <div class="title-block">
+    <h1>Usuarios</h1>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="primary"
+        matTooltip="Agregar usuario"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onAddUsuario()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="usuario-listado">
+    <div class="usuario" *ngFor="let usuario of usuarios">
+        <mat-card>
+          <mat-card-title>{{usuario.nombreUsuario}}</mat-card-title>
+          <mat-card-subtitle i18n>{{usuarios.length}} {usuarios.length, plural, =0 {Usuarios} =1 {Usuario} other {Usuarios}}</mat-card-subtitle>
+          <mat-card-actions>
+            <a mat-button routerLink="/usuarios/{{usuario.nombreUsuario}}">DETALLES</a>
+            <button mat-button (click)="onDeleteUsuario(usuario)">ELIMINAR</button>
+          </mat-card-actions>
+        </mat-card>
+    </div>
+  </div>
+</div>

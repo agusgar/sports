@@ -1,0 +1,20 @@
+.action-alert-component {
+  display: flex;
+  align-items: center;
+
+  .action-message {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+
+    .action-links {
+      display: flex;
+    }
+  }
+
+  .action-icon {
+    .mat-icon {
+      font-size: 28px;
+    }
+  }
+}

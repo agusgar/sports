@@ -1,0 +1,42 @@
+$calendar-cell-width: 140px;
+$calendar-width: $calendar-cell-width * 7;
+$calendar-cell-height: ($calendar-cell-width / 4) * 3;
+$day-of-week-height: $calendar-cell-width / 4;
+
+.calendar-cell {
+  padding: 10px;
+  border: solid 1px #e1e1e1;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: $calendar-cell-width;
+  height: $calendar-cell-height;
+  line-height: $calendar-cell-height;
+
+  .cell-day {
+    color: #212529;
+    font-size: 1.2em;
+  }
+  .cell-amount {
+    margin-top: 15px;
+    margin-left: 5px;
+  }
+
+  &.calendar-cell-enabled:hover {
+    background-color: #ededed;
+    cursor: pointer;
+  }
+
+  &.calendar-cell-enabled:active {
+    cursor: pointer;
+    background-color: #f3f1f1;
+  }
+
+  &.calendar-cell-disabled {
+    cursor: default;
+
+    .cell-day {
+      opacity: .2;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+<div class="comentarios-component" *ngIf="encuentros && comentarios && equipos && followedEquipos && deportes">
+  <div class="encuentros">
+    <div class="title-block">
+      <h1>Encuentros</h1>
+    </div>
+    <div class="list">
+      <div
+        class="encuentro"
+        [class.selected]="isEncuentroSelected(encuentro)"
+        *ngFor="let encuentro of (encuentros | followedEncuentros:followedEquipos)"
+        (click)="onSelectEncuentro(encuentro)">
+        <mat-card>
+          <mat-card-title>{{encuentro.fechaYHora | date:'mediumDate':'uy':'es' }}</mat-card-title>
+          <mat-card-subtitle i18n>{{encuentro.idEquipos.length}} {encuentro.idEquipos.length, plural, =0 {Equipos} =1 {Equipo} other {Equipos}}</mat-card-subtitle>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <div class="comentarios">
+    <div class="encuentro-details">
+      <h2>Informacion</h2>
+      <div class="fields">
+        <div class="field">
+          <div class="field-label">Fecha encuentro: </div>
+          <div class="field-value">{{encuentro.fechaYHora | date:'mediumDate':'uy':'es' }}</div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">Deporte: </div>
+          <div class="field-value">{{deporte.nombre}}</div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">Equipos participantes: </div>
+          <div class="field-value">
+            <mat-chip-list>
+              <mat-chip color="primary" *ngFor="let equipo of equipos">{{equipo.nombre}}</mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="comentario" *ngFor="let comentario of comentariosEncuentro">
+        <app-comentario [comentario]="comentario"></app-comentario>
+      </div>
+    </div>
+
+    <div class="new-comentario">
+      <form (ngSubmit)="onSubmit(); commentForm.reset();" #commentForm="ngForm">
+        <mat-form-field>
+          <textarea
+            matInput
+            placeholder="Ingresa un comentario"
+            [(ngModel)]="commentText"
+            name="comment"
+            cdkTextareaAutosize
+            required
+            #comment="ngModel">
+          </textarea>
+          <mat-error [hidden]="comment.valid || comment.pristine"></mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!commentForm.form.valid">ENVIAR</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="no-content" *ngIf="noEncuentros === true">
+  <app-alert [type]="type.Info" [msg]="noEncuentrosForUser"></app-alert>
+</div>

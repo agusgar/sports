@@ -1,0 +1,11 @@
+<div class="action-alert-component">
+  <div class="action-icon">
+    <mat-icon [color]="color">{{icon}}</mat-icon>
+  </div>
+  <div class="action-message">
+    <div class="action-text">{{message}}</div>
+    <div class="action-links">
+      <a class="link" *ngFor="let link of links" [routerLink]="link.href">{{link.text}}</a>
+    </div>
+  </div>
+</div>

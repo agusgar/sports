@@ -1,0 +1,18 @@
+<div class="deporte-edit-component">
+  <form [formGroup]="deporteEditForm" class="deporte-edit-form" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>{{title}}</h1>
+    <div mat-dialog-content>
+      <mat-form-field>
+        <input matInput placeholder="Nombre" formControlName="nombre" required>
+        <mat-error *ngIf="nombre.errors?.required">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-checkbox [disabled]="isDisabled"formControlName="admiteEncuentrosMultiples">Admite encuentos de mas de dos equipos</mat-checkbox>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="false">CANCELAR</button>
+      <button mat-button type="submit" cdkFocusInitial [disabled]="!deporteEditForm.valid">GUARDAR</button>
+    </div>
+  </form>
+ </div>

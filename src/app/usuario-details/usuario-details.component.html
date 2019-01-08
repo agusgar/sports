@@ -1,0 +1,60 @@
+<div class="usuario-details-component" *ngIf="usuario">
+  <div class="title-block">
+    <h1>Informacion sobre {{usuario.nombreUsuario}}</h1>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="primary"
+        matTooltip="Modificar usuario"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onChangeUsuario()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="warn"
+        matTooltip="Eliminar usuario"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onDeleteUsuario()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">Nombre de Usuario: </div>
+      <div class="field-value">{{usuario.nombreUsuario}}</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Nombre: </div>
+      <div class="field-value">{{usuario.nombre}}</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Apellido: </div>
+      <div class="field-value">{{usuario.apellido}}</div>
+    </div>
+    
+    <div class="field">
+      <div class="field-label">Telefono: </div>
+      <div class="field-value">{{usuario.telefono}}</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Mail: </div>
+      <div class="field-value">{{usuario.mail}}</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">Es Administrador: </div>
+
+      <div *ngIf="usuario.esAdmin" class="field-value">SI</div>
+      <div *ngIf="!usuario.esAdmin" class="field-value">NO</div>
+    </div>
+
+  </div>
+ 
+</div>

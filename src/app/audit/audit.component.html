@@ -1,0 +1,34 @@
+<div class="audit-component">
+  <div class="seleccion-fecha">
+    <form [formGroup]="logForm" (ngSubmit)="onSubmit()">
+      <h1 mat-dialog-title>Visualizar Logs</h1>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Fecha Desde" formControlName="fechaDesde">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker1" placeholder="Fecha Hasta" formControlName="fechaHasta">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
+      <button mat-button type="submit" cdkFocusInitial [disabled]="!logForm.valid">Buscar</button>
+    </form>
+  </div>
+  <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="tipoAccion">
+      <th mat-header-cell *matHeaderCellDef>Tipo de accion</th>
+      <td mat-cell *matCellDef="let element"> {{element.tipoAccion}} </td>
+    </ng-container>
+    <ng-container matColumnDef="nombreUsuario">
+      <th mat-header-cell *matHeaderCellDef> Nobre de usuario </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombreUsuario}} </td>
+    </ng-container>
+    <ng-container matColumnDef="fechaHora">
+      <th mat-header-cell *matHeaderCellDef> Fecha y hora </th>
+      <td mat-cell *matCellDef="let element"> {{element.fechaHora}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

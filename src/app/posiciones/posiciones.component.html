@@ -1,0 +1,32 @@
+<div class="posiciones-container" *ngIf="deportes && !noDeportes">
+  <div class="seccion-principal">
+    <h2>Seleccione el deporte para ver las posiciones</h2>
+    <div class="filters">
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedDeporteId" (selectionChange)="onSelectedDeporteChange($event)">
+          <mat-option *ngFor="let deporte of deportes" [value]="deporte.id">{{deporte.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <table mat-table #table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="nombreEquipo">
+      <th mat-header-cell *matHeaderCellDef>Equipo</th>
+      <td mat-cell *matCellDef="let element"> {{element.equipoDTO.nombre}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="puntaje">
+      <th mat-header-cell *matHeaderCellDef> Puntaje</th>
+      <td mat-cell *matCellDef="let element"> {{element.puntaje}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<div class="no-content" *ngIf="noDeportes">
+  <app-alert
+    [type]="type.Info"
+    msg="No se encontraron deportes en el sistema. Por el momento esta pagina no se encuentra disponible. Comienza agregando nuevos deportes usando la opcion de agregar deportes en la pantalla de deportes.">
+  </app-alert>
+</div>

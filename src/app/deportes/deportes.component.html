@@ -1,0 +1,32 @@
+<div class="deportes-component">
+  <div class="title-block">
+    <h1>Deportes</h1>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="primary"
+        matTooltip="Agregar deporte"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onAddDeporte()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="deporte-listado">
+    <div class="deporte" *ngFor="let deporte of deportes">
+      <mat-card>
+        <mat-card-title>{{deporte.nombre}}</mat-card-title>
+        <mat-card-actions>
+          <a mat-button routerLink="/deportes/{{deporte.id}}">DETALLES</a>
+          <button mat-button (click)="onDeleteDeporte(deporte)">ELIMINAR</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div *ngIf="noDeportes" class="no-content">
+      <app-alert
+        [type]="type.Info"
+        msg="No se encontraron deportes en el sistema. Comienza agregando nuevos usando la opcion de agregar deporte.">
+      </app-alert>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="calendar-component" *ngIf="deportes && calendarCellModels">
+  <div class="calendar-filters">
+    <div class="filters">
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedDeporteId" (selectionChange)="onSelectedDeporteChange($event)">
+          <mat-option *ngFor="let deporte of deportes" [value]="deporte.id">{{deporte.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="dp" placeholder="Elije mes y año" [formControl]="date">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp
+          startView="multi-year"
+          (yearSelected)="onChangeYear($event)"
+          (monthSelected)="onChangeMonth($event, dp)"
+          panelClass="example-month-picker">
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="info">
+      <div>Encuentros: <strong>{{amountOfEncuentros}}</strong></div>
+    </div>
+  </div>
+  <div class="calendar">
+    <div class="day-of-week-cell" *ngFor="let dayOfWeek of daysOfWeek">
+      <div class="day-of-week-text">{{dayOfWeek}}</div>
+    </div>
+    <div *ngFor="let calendarCellModel of calendarCellModels">
+      <app-calendar-cell
+        [model]="calendarCellModel"
+        [selected]="selectedCalendarCell === calendarCellModel"
+        (cellClick)="onCellClick($event)">
+      </app-calendar-cell>
+    </div>
+  </div>
+</div>
+<div *ngIf="noDeportes" class="no-content">
+  <app-alert
+    [type]="type.Info"
+    msg="No se encontraron deportes en el sistema. Comienza agregando nuevos usando la opcion de agregar deporte en la pantalla de deportes.">
+  </app-alert>
+</div>

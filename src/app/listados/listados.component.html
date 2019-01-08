@@ -1,0 +1,47 @@
+<div class="listado-component" *ngIf="deportes && !noDeportes">
+  <div class="seccion-principal">
+    <h2>Seleccione el deporte para ver sus encuentros</h2>
+    <div class="filters">
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedDeporteId" (selectionChange)="onSelectedDeporteChange($event)">
+          <mat-option *ngFor="let deporte of deportes" [value]="deporte.id">{{deporte.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <h2>Seleccione un equipo para ver sus encuentros</h2>
+    <div class="filters">
+      <mat-form-field>
+        <mat-select [(ngModel)]="selectedEquipoId" (selectionChange)="onSelectedEquipoChange($event)">
+          <mat-option value="0">Todos</mat-option>
+          <mat-option *ngFor="let equipo of equipos" [value]="equipo.id">{{equipo.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div *ngIf="show; else noHayEncuentros">
+    <div class="encuentros">
+      <div class="encuentro-listado">
+        <div class="encuentro" *ngFor="let encuentro of encuentros">
+          <mat-card class="encuentro-card">
+            <mat-card-title>{{encuentro.fechaYHora | date:'mediumDate':'uy':'es' }}</mat-card-title>
+            <mat-card-actions>
+              <a mat-button routerLink="/encuentros/{{encuentro.id}}">DETALLES</a>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noHayEncuentros>
+    <h3 class="seccionPrincipal">No se encontraron encuentros</h3>
+  </ng-template>
+</div>
+<div class="no-content" *ngIf="noDeportes">
+  <app-alert
+    [type]="type.Info"
+    msg="No se encontraron deportes en el sistema. Por el momento esta pagina no se encuentra disponible. Comienza agregando nuevos deportes usando la opcion de agregar deportes en la pantalla de deportes.">
+  </app-alert>
+</div>

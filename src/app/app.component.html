@@ -1,0 +1,54 @@
+<div class="component-container">
+  <mat-toolbar color="primary" class="toolbar">
+    <mat-toolbar-row>
+      <span>Nombre App</span>
+      <a *ngIf="isAuthenticated" routerLink="/calendario" mat-menu-item>
+        <span>Calendario</span>
+      </a>
+      <a *ngIf="isAuthenticated" routerLink="/comentarios" mat-menu-item>
+        <span>Comentarios</span>
+      </a>
+      <a *ngIf="isAuthenticated && isAdmin" routerLink="/deportes" mat-menu-item>
+        <span>Deportes</span>
+      </a>
+      <a *ngIf="isAuthenticated && isAdmin" routerLink="/encuentros" mat-menu-item>
+        <span>Encuentros</span>
+      </a>
+      <a *ngIf="isAuthenticated && isAdmin" routerLink="/usuarios" mat-menu-item>
+        <span>Usuarios</span>
+      </a>
+      <a *ngIf="isAuthenticated && isAdmin" routerLink="/fixtures" mat-menu-item>
+        <span>Fixtures</span>
+      </a>
+      <a *ngIf="isAuthenticated" routerLink="/posiciones" mat-menu-item>
+        <span>Posiciones</span>
+      </a>
+      <a *ngIf="isAuthenticated && isAdmin" routerLink="/listados" mat-menu-item>
+        <span>Listados</span>
+      </a>
+      <span class="example-fill-remaining-space"></span>
+      <span class="align-center"></span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <a *ngIf="isAuthenticated" routerLink="/perfil" mat-menu-item>
+          <mat-icon>person</mat-icon>
+          <span>Perfil</span>
+        </a>
+        <a *ngIf="isAuthenticated && isAdmin" routerLink="/auditoria" mat-menu-item>
+          <mat-icon>find_in_page</mat-icon>
+          <span>Auditoria</span>
+        </a>
+        <button *ngIf="isAuthenticated" mat-menu-item (click)="onLogout()">
+          <mat-icon>exit_to_app</mat-icon>
+          <span>Salir</span>
+        </button>
+      </mat-menu>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <app-spinner></app-spinner>
+  <app-loading></app-loading>
+  <router-outlet></router-outlet>
+</div>

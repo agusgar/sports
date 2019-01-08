@@ -1,0 +1,38 @@
+.fixture-execution-form {
+  .mat-form-field {
+    width: 100%;
+  }
+
+  .field-errors-wrapper {
+    width: 100%;
+  }
+
+  .field-row {
+    display: flex;
+  }
+
+  .list-item-title {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  .field {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+
+    .field-label {
+      margin-right: 10px;
+    }
+    .field-value {
+      font-weight: bold;
+    }
+  }
+}
+
+.no-content {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,33 @@
+<div class="fixture-execution-component">
+  <form [formGroup]="fixtureExecutionForm" class="fixture-execution-form" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>Generar Fixture</h1>
+    <div class="field">
+      <div class="field-label">Tipo fixture: </div>
+      <div class="field-value">{{fixture}}</div>
+    </div>
+    <div mat-dialog-content *ngIf="deportes && !noDeportes">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Elegir fecha" formControlName="date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="date.invalid">Se debe ingresar una fecha</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select formControlName="selectedDeporteId">
+          <mat-option *ngFor="let deporte of deportes" [value]="deporte.id">{{deporte.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div *ngIf="noDeportes" class="no-content">
+      <app-alert
+        [type]="type.Info"
+        msg="No se encontraron deportes en el sistema. Comienza agregando nuevos usando la opcion de agregar deportes en la pantalla de deportes.">
+      </app-alert>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="false">CANCELAR</button>
+      <button mat-button type="submit" cdkFocusInitial [disabled]="!fixtureExecutionForm.valid">GENERAR</button>
+    </div>
+  </form>
+</div>

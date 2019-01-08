@@ -1,0 +1,61 @@
+<div class="encuentro-edit-component">
+  <form [formGroup]="encuentroEditForm" class="encuentro-edit-form" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>{{title}}</h1>
+    <div mat-dialog-content *ngIf="equipos && deportes">
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Elegir fecha" formControlName="date" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="date.invalid">Se debe ingresar una fecha</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select (selectionChange)="onSelectedDeporteChange($event)" formControlName="selectedDeporteId">
+          <mat-option *ngFor="let deporte of deportes" [value]="deporte.id">{{deporte.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-list-item>
+        <div class="list-item-title">Equipos participantes</div>
+      </mat-list-item>
+
+      <div class="field-row">
+        <mat-form-field>
+          <mat-select formControlName="selectedEquipoId">
+            <mat-option *ngFor="let equipo of equipos" [value]="equipo.id">{{equipo.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-button type="button" (click)="onAddEquipo()">AGREGAR</button>
+      </div>
+
+      <mat-form-field class="example-chip-list">
+        <mat-chip-list formArrayName="selectedEquipos">
+          <mat-chip
+            *ngFor="let equipo of selectedEquipos.controls"
+            [selectable]="true"
+            [removable]="true"
+            (removed)="onRemoveEquipo(equipo)">
+            {{equipo.value}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+
+          <div class="field-errors-wrapper">
+            <mat-error *ngIf="selectedEquipos.errors?.required || selectedEquipos.errors?.minlength">
+              Se deben agregar <strong>por lo menos 2 equipos</strong>
+            </mat-error>
+          </div>
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+    <div *ngIf="noDeportes" class="no-content">
+      <app-alert
+        [type]="type.Info"
+        msg="No se encontraron deportes en el sistema. Comienza agregando nuevos usando la opcion de agregar deportes en la pantalla de deportes.">
+      </app-alert>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="false">CANCELAR</button>
+      <button mat-button type="submit" cdkFocusInitial [disabled]="!encuentroEditForm.valid">GUARDAR</button>
+    </div>
+  </form>
+</div>

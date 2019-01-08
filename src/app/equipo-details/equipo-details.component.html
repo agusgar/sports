@@ -1,0 +1,30 @@
+<div class="equipo-details-component" *ngIf="equipo">
+  <div class="title-block">
+    <h1>Informacion sobre {{equipo.nombre}}</h1>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="primary"
+        matTooltip="Modificar equipo"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onChangeEquipo()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="warn"
+        matTooltip="Eliminar equipo"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onDeleteEquipo()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="image-detail">
+    <mat-card *ngIf="equipo.imagen">
+      <img mat-card-image src={{equipo.imagen}}>
+    </mat-card>
+  </div>
+</div>

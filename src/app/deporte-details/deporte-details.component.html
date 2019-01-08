@@ -1,0 +1,67 @@
+<div class="deporte-details-component" *ngIf="deporte && equipos">
+  <div class="title-block">
+    <h1>Informacion sobre {{deporte.nombre}}</h1>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="primary"
+        matTooltip="Modificar deporte"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onChangeDeporte()">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="warn"
+        matTooltip="Eliminar deporte"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onDeleteDeporte()">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <div class="field-label">Admite encuentros de mas de dos equipos: </div>
+      <div *ngIf="deporte.admiteEncuentrosMultiples" class="field-value">SI</div>
+      <div *ngIf="!deporte.admiteEncuentrosMultiples" class="field-value">NO</div>
+    </div>
+  </div>
+  <mat-list-item>
+    <div class="title-block">
+      <h2>Equipos</h2>
+      <div class="title-button">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Agregar equipo"
+          [matTooltipShowDelay]="showDelay.value"
+          (click)="onAddEquipo()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-list-item>
+
+  <mat-divider></mat-divider>
+
+  <div class="equipos">
+    <div class="equipo" *ngFor="let equipo of equipos">
+      <mat-card>
+        <mat-card-title>{{equipo.nombre}}</mat-card-title>
+        <mat-card-subtitle i18n>
+          {{equipo.encuentroEquipo.length}} {equipo.encuentroEquipo.length, plural, =0 {encuentros} =1 {encuentro} other {encuentros}}
+        </mat-card-subtitle>
+        <mat-card-actions>
+          <a mat-button routerLink="/equipos/{{equipo.id}}">DETALLES</a>
+          <button mat-button (click)="onDeleteEquipo(equipo)">ELIMINAR</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+    <div *ngIf="!deportes" class="no-content">
+      <app-alert [type]="type.Info" msg="Este deporte no tiene equipos aun."></app-alert>
+    </div>
+  </div>
+</div>

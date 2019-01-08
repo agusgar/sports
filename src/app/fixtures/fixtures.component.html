@@ -1,0 +1,26 @@
+<div class="fixtures-component" *ngIf="fixtures">
+  <div class="title-block">
+    <h1>Fixtures</h1>
+    <div class="title-button">
+      <button
+        mat-icon-button
+        color="primary"
+        matTooltip="Recargar fixtures"
+        [matTooltipShowDelay]="showDelay.value"
+        (click)="onReload()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="fixture-listado">
+    <mat-card class="fixture" *ngFor="let fixture of fixtures.tiposFixture">
+      <mat-card-title>{{fixture}}</mat-card-title>
+      <mat-card-actions>
+        <button mat-button (click)="onExecute(fixture)">
+          <mat-icon>play_arrow</mat-icon>
+          EJECUTAR
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+.usuarios-component {
+    padding: 0 30px;
+    .title-block {
+      display: flex;
+  
+      & > :nth-child(2) {
+        margin-left: 15px;
+      }
+  
+      .title-button {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+    .usuario-listado {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+  
+      .usuario {
+        margin: 10px;
+      }
+    }
+  }

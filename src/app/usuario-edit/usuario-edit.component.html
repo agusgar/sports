@@ -1,0 +1,48 @@
+<div class="usuario-edit-component">
+   <form [formGroup]="usuarioEditForm" class="usuario-edit-form" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>Datos de Usuario</h1>
+    <div mat-dialog-content>
+      <mat-form-field>
+        <input matInput [readonly]="isDisabled" placeholder="Nombre Usuario" formControlName="nombreUsuario" required>
+        <mat-error *ngIf="nombreUsuario.errors?.required">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Nombre" formControlName="nombre" required>
+        <mat-error *ngIf="nombre.errors?.required">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Clave" formControlName="clave" required>
+        <mat-error *ngIf="clave.errors?.required">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Apellido" formControlName="apellido" required>
+        <mat-error *ngIf="apellido.errors?.required">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Telefono" formControlName="telefono" required>
+        <mat-error *ngIf="telefono.errors?.required">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Mail" formControlName="mail" required>
+        <mat-error *ngIf="mail.errors?.required">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>     
+      <mat-checkbox formControlName="esAdmin">Es Administrador</mat-checkbox>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="false">CANCELAR</button>
+      <button mat-button type="submit" cdkFocusInitial [disabled]="!usuarioEditForm.valid">GUARDAR</button>
+    </div>
+  </form>
+</div>

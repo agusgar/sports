@@ -1,0 +1,17 @@
+<div class="encuentros-at-day-component" *ngIf="encuentros">
+  <div *ngFor="let encuentro of encuentros" class="encuentro">
+    <mat-card>
+      <mat-card-title>{{encuentro.fechaYHora | date:'mediumDate':'uy':'es' }}</mat-card-title>
+      <mat-card-subtitle i18n>{{encuentro.equipos.length}} {encuentro.equipos.length, plural, =0 {Equipos} =1 {Equipo} other {Equipos}}</mat-card-subtitle>
+      <mat-card-content>
+        <mat-chip-list>
+          <mat-chip color="primary" *ngFor="let equipo of encuentro.equipos">{{equipo.nombre}}</mat-chip>
+        </mat-chip-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <a *ngIf="isAdmin" mat-button routerLink="/encuentros/{{encuentro.id}}">DETALLES</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+

@@ -1,0 +1,6 @@
+<div class="calendar-cell" [ngClass]="getCellClass()" (click)="onClick()">
+  <div class="cell-column cell-amount">
+    <span *ngIf="amount > 0" [matBadge]="amount" matBadgeOverlap="false"></span>
+  </div>
+  <div class="cell-column cell-day">{{day}}</div>
+</div>

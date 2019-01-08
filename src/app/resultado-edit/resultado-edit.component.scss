@@ -1,0 +1,32 @@
+.mat-dialog-title {
+  margin-bottom: 5px;
+}
+
+.winner-field {
+  display: inline-flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+  .mat-radio-button {
+    margin-bottom: 5px;
+  }
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.field-errors-wrapper {
+  width: 100%;
+}
+
+.field-row {
+  display: flex;
+}
+
+.list-item-title {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+

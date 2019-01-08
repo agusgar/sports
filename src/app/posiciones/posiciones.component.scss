@@ -1,0 +1,27 @@
+.posiciones-container {
+  .seccion-principal{
+    margin-left: 5%;
+    margin-top: 2%;
+  }
+
+  table {
+    width: 30%;
+    margin-left: 5%;
+  }
+
+  .filters {
+    .mat-form-field:not(:first-child) {
+      margin-left: 20px;
+    }
+  }
+}
+
+.no-content {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+
+  &>* {
+    width: 50%;
+  }
+}

@@ -1,0 +1,34 @@
+.deportes-component {
+  padding: 0 30px;
+
+  .title-block {
+    display: flex;
+
+    & > :nth-child(2) {
+      margin-left: 15px;
+    }
+
+    .title-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .deporte-listado {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .deporte {
+      margin: 10px;
+    }
+  }
+
+  .no-content {
+    display: flex;
+    margin-top: 20px;
+    width: 50%;
+    justify-content: center;
+  }
+}

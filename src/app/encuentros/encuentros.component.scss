@@ -1,0 +1,37 @@
+.encuentros-component {
+  padding: 0 30px;
+
+  .title-block {
+    display: flex;
+
+    & > :nth-child(2) {
+      margin-left: 15px;
+    }
+
+    .title-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .encuentro-listado {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .encuentro {
+      margin: 10px;
+    }
+  }
+
+  .no-content {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    &>* {
+      width: 50%;
+    }
+  }
+}

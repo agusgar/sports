@@ -1,0 +1,27 @@
+.fixtures-component {
+  padding: 0 30px;
+
+  .title-block {
+    display: flex;
+
+    & > :nth-child(2) {
+      margin-left: 15px;
+    }
+
+    .title-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .fixture-listado {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .fixture {
+      margin: 10px;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<div class="equipo-edit-component">
+  <form [formGroup]="equipoEditForm" class="equipo-edit-form" (ngSubmit)="onSubmit()">
+    <h1 mat-dialog-title>Agregar Equipo</h1>
+    <div mat-dialog-content>
+      <mat-form-field>
+        <input matInput placeholder="Nombre equipo" formControlName="name" required>
+        <mat-error *ngIf="name.errors?.required">
+          Este campo es <strong>requerido</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-slide-toggle
+        formControlName="hasImage"
+        (change)="onHasImageChange()">
+        Imagen
+      </mat-slide-toggle>
+      <input style="display:none" type="file" #imageInput (change)="onImageChange($event)" [disabled]="!hasImage.value">
+      <mat-form-field (click)="imageInput.click()">
+        <input matInput placeholder="Imagen" type="text" formControlName="imageName">
+        <mat-icon matSuffix>photo</mat-icon>
+      </mat-form-field>
+    </div>
+    <div class="equipo-image">
+      <mat-card>
+        <img mat-card-image src={{image?.value}}>
+      </mat-card>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="false">Cancelar</button>
+      <button mat-button type="submit" cdkFocusInitial [disabled]="!equipoEditForm.valid">Guardar</button>
+    </div>
+  </form>
+</div>

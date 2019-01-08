@@ -1,0 +1,30 @@
+.alert-component {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-radius: 6px;
+
+  &.alert-info {
+    background: rgba(63, 81, 181, 0.1);
+  }
+
+  &.alert-warn {
+    background-color: rgba(63, 81, 181, 0.1);
+  }
+
+  &.alert-error {
+    background: rgba(244, 67, 54, 0.1);
+  }
+
+  .alert-message {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .alert-icon {
+    .mat-icon {
+      font-size: 28px;
+    }
+  }
+}

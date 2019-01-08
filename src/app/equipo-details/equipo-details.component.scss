@@ -1,0 +1,25 @@
+.equipo-details-component {
+  padding: 0 30px;
+
+  .title-block {
+    display: flex;
+
+    & > :nth-child(2) {
+      margin-left: 15px;
+    }
+
+    .title-button {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  .image-detail {
+    width: 400px;
+
+    .mat-card {
+      padding: 25px;
+    }
+  }
+}

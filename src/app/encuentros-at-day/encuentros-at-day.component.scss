@@ -1,0 +1,7 @@
+.encuentros-at-day-component {
+  padding: 20px;
+
+  .encuentro:not(:first-child) {
+    margin-top: 10px;
+  }
+}
